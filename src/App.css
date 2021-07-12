@@ -1,52 +1,14 @@
-.grid, .app-wrapper { 
+.grid, .app-wrapper {
   display: grid;
-  grid-template-areas:
+  grid-template-areas:  
   "header content content"
   "nav content content"
   "nav content content"
   "nav content content";
-  grid-template-rows: 100px 300px;
+  grid-template-rows: 100px 360px;
   grid-template-columns: 1.6fr 10.4fr;
-  grid-gap: 0 10px;
+  grid-gap: 10px 10px;
   width: 1200px;
   margin: 0 auto;
   margin-top: 10px;
-}
-.header {
-  grid-area: header;
-  background-color: green;
-}
-
-.header img {
-  width: 60px;
-  height: 60px;
-}
-
-.sidebar {
-  grid-area: nav;
-  background-color: blue;
-}
-.profile {
-  grid-area: content;
-  background-color: red;
-  border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
-}
-
-.profile img {
-  width: 100%;
-  height: 150px;
-  border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
-}
-
-.profile .ava {
-  width: 60px;
-  height: 60px;
 }

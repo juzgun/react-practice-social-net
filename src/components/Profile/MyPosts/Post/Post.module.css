@@ -1,0 +1,41 @@
+
+.item {
+  display: flex;
+  justify-self: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-end;
+  justify-content: flex-start;
+  align-items: baseline;
+  color: black;
+  width: 70vw;
+  position: relative;
+  padding: 25px 10px;
+  background-color: rgb(198, 188, 188);
+  border-radius: 15px;
+  margin-left: 15px;
+  margin-top: 15px;
+
+  }
+
+.item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.item .postData {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: absolute;
+  top: 65px;
+  left: 55vw;
+  width: 160px;
+}
+
+.postLike, .postShare {
+  padding: 0 10px;
+}

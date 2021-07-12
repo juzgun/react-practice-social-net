@@ -1,0 +1,28 @@
+.header {
+    grid-area: header;
+    background-color: green;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+.header img {
+    width: 60px;
+    height: 60px;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
+.name {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  color: #FFFFFF;
+  font-family: Lato;
+  font-size: 24px;
+  line-height: 30px;
+}

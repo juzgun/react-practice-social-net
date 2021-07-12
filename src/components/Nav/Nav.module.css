@@ -1,0 +1,35 @@
+.nav {
+    grid-area: nav;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+.item {
+    color: white;
+    cursor: pointer;
+    padding: 7px 0 7px 10px;
+}
+
+.item:hover {
+  color: rgba(255, 255, 255, 0.55)
+}
+
+.active {
+  color: rgb(255, 94, 0);
+}
+
+.settings {
+  padding-top: 50px;
+}
