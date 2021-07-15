@@ -1,11 +1,16 @@
 .profile {
-    grid-area: content;
+  margin: 5px;
+  margin-top: 10px;
     background-color: rgb(231, 198, 198);
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     -ms-border-radius: 12px;
     -o-border-radius: 12px;
+    -webkit-box-shadow: -5px -5px 20px -9px #fff;
+    -moz-box-shadow: -5px -5px 20px -9px #fff;
+    box-shadow: -5px -5px 20px -9px #fff;
+    width: 980px;
   }
   
 .mainPic {
@@ -28,9 +33,9 @@
 
 .user {
   display: flex;
-    align-content: stretch;
-    justify-content: flex-start;
-    align-items: flex-start;
+  align-content: stretch;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding-top: 10px;
 }
 

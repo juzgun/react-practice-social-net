@@ -1,10 +1,13 @@
 .nav {
-    grid-area: nav;
-    background-color: blue;
+    background-color: rgb(197, 52, 180);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 220px;
+    height: max-content;
+    margin: 5px;
+    margin-top: 10px;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -14,6 +17,9 @@
     font-family: Roboto;
     font-size: 24px;
     line-height: 30px;
+    -webkit-box-shadow: -5px -5px 20px -9px #fff;
+    -moz-box-shadow: -5px -5px 20px -9px #fff;
+    box-shadow: -5px -5px 20px -9px #fff;
   }
 
 .item {
@@ -22,9 +28,15 @@
     padding: 7px 0 7px 10px;
 }
 
-.item:hover {
-  color: rgba(255, 255, 255, 0.55)
+.item a {
+  color: white;
+  text-decoration: none;
 }
+
+.item a.activeLink {
+  color: rgb(176, 172, 141);
+}
+
 
 .active {
   color: rgb(255, 94, 0);

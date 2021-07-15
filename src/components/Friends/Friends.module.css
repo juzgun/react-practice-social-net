@@ -1,0 +1,13 @@
+.friends {
+    margin: 5px;
+      background-color: rgb(222, 203, 188);
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      -ms-border-radius: 12px;
+      -o-border-radius: 12px;
+      -webkit-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+      -moz-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+      box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+      width: 980px;
+    }

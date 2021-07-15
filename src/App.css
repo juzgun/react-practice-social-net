@@ -1,14 +1,23 @@
-.grid, .app-wrapper {
-  display: grid;
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+body {
+  background-color: rgb(108, 108, 108)
+}
+.flex, .app-wrapper {
+  /* display: grid;
   grid-template-areas:  
   "header content content"
   "nav content content"
   "nav content content"
   "nav content content";
   grid-template-rows: 100px 360px;
-  grid-template-columns: 1.6fr 10.4fr;
-  grid-gap: 10px 10px;
+  grid-template-columns: 1.8fr 10.2fr;
+  grid-gap: 10px 10px; */
+  display: flex;
   width: 1200px;
   margin: 0 auto;
-  margin-top: 10px;
+  /* background-color: #000; */
 }

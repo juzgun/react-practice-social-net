@@ -1,0 +1,22 @@
+.newPost {
+  padding-left: 15px;
+} 
+
+textarea {
+  background	: rgb(242, 245, 245) center center no-repeat;
+  outline: none;
+	-moz-appearance: none;
+	border: 1px solid #999;
+  resize: none;
+  overflow: auto;
+  border-radius: 8px;
+  padding: 10px 10px;
+  margin: 15px 10px;
+  -webkit-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+  -moz-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+  box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
+}
+
+button {
+  margin: 5px 15px;
+}

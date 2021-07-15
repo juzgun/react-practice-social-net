@@ -1,0 +1,12 @@
+.allDialogs {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: max-content;
+    padding: 10px 10px;
+    border-right: 2px solid rgba(181, 181, 181, 0.593);
+}
+
+.allDialogsNames {
+    margin: 0;
+}
