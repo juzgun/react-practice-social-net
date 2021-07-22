@@ -10,8 +10,7 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
-
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="flex app-wrapper">
@@ -19,12 +18,12 @@ const App = () => {
           <Header />
           <Nav />
         </div>
-        <Route path="/dialogs" component={Dialog} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/friends" component={Friends} />
-        <Route path="/news" component={News} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/music" component={Music} />
+        <Route path="/dialogs" render={() => <Dialog dialogsPage={props.state.dialogsPage} />} />
+        <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} />} />
+        <Route path="/friends" render={() => <Friends />} />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/settings" render={() => <Settings />} />
+        <Route path="/music" render={() => <Music />} />
       </div>
     </BrowserRouter>
   );

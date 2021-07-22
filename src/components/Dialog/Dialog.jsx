@@ -4,12 +4,13 @@ import DialogMessages from './DialogMessages/DialogMessages';
 import classes from "./Dialog.module.css"
 
 const Dialog = (props) => {
+
     return (
         <div className={classes.dialog}>
             <div className={classes.dialogTopic}>DIALOGS</div>
             <div className={classes.dialogWrapper}>
-                <AllDialogs />
-                <DialogMessages />
+                <AllDialogs dialogsData={props.dialogsPage.dialogsData} />
+                <DialogMessages messagesData={props.dialogsPage.messagesData} />
             </div>
         </div>
     )

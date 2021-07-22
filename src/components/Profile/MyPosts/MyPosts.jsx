@@ -4,10 +4,7 @@ import Post from './Post/Post';
 import CreatePost from './createPost/CreatePost.jsx';
 
 const MyPosts = (props) => {
-
-    let postsData = props.postdata;
-
-    let postsElements = postsData
+    let postsElements = props.postsData
         .map(post => <Post message={post.postMessage} likes={post.likes} shares={post.shares} />)
 
     return (
