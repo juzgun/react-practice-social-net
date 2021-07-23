@@ -11,7 +11,9 @@ const DialogMessages = (props) => {
     return (
         <div className={classes.dialogMessages}>
             {messagesElements}
-            <CreateMessage />
+            <CreateMessage
+                addMessage={props.addMessage}
+                updateNewMessageText={props.updateNewMessageText} />
         </div>
     )
 }

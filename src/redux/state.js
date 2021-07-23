@@ -18,7 +18,8 @@ let state = {
             { id: 4, text: "Ann Alo hellow", age: 22 },
             { id: 5, text: "Bob Alo hellow", age: 18 },
             { id: 6, text: "Nik Alo hellow", age: 26 }
-        ]
+        ],
+        newMessageText: ''
     },
 
     profilePage: {
@@ -32,7 +33,7 @@ let state = {
             { id: 7, postMessage: "When u'll come home?", likes: 24, shares: 2 },
             { id: 8, postMessage: "Next week, I guess...", likes: 4, shares: 1 }
         ],
-        newPostText: 'crazycow'
+        newPostText: ''
     }
 };
 
@@ -55,5 +56,23 @@ export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 };
+
+
+export let addMessage = (text) => {
+    let newMessage = {
+        id: state.dialogsPage.dialogsData[5].id,
+        text: state.dialogsPage.newMessageText,
+        age: state.dialogsPage.dialogsData[5].age
+    }
+    state.dialogsPage.messagesData.push(newMessage);
+    state.dialogsPage.newMessageText = '';
+    rerenderEntireTree(state);
+}
+
+export let updateNewMessageText = (newText) => {
+    state.dialogsPage.newMessageText = newText;
+    rerenderEntireTree(state);
+};
+
 
 export default state;

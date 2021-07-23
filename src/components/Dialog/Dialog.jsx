@@ -10,7 +10,10 @@ const Dialog = (props) => {
             <div className={classes.dialogTopic}>DIALOGS</div>
             <div className={classes.dialogWrapper}>
                 <AllDialogs dialogsData={props.dialogsPage.dialogsData} />
-                <DialogMessages messagesData={props.dialogsPage.messagesData} />
+                <DialogMessages
+                    messagesData={props.dialogsPage.messagesData}
+                    addMessage={props.addMessage}
+                    updateNewMessageText={props.updateNewMessageText} />
             </div>
         </div>
     )
