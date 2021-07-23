@@ -1,8 +1,9 @@
-.newPost {
+.newMessage {
   padding-left: 15px;
 } 
 
-.newPost textarea {
+.newMessage textarea {
+  width: 550px;
   background	: rgb(242, 245, 245) center center no-repeat;
   outline: none;
 	-moz-appearance: none;
@@ -11,12 +12,16 @@
   overflow: auto;
   border-radius: 8px;
   padding: 10px 10px;
-  margin: 15px 10px;
+  margin: 15px auto 0px -5px;
   -webkit-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
   -moz-box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
   box-shadow: -5px -5px 20px -9px rgba(53, 85, 109, 0.6);
 }
 
-.newPost button {
+.newMessage button {
   margin: 5px 15px;
+}
+
+.newMessage button:first-child {
+  margin-left: 0px;
 }

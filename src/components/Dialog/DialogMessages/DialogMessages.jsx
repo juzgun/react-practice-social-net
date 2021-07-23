@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateMessage from './CreateMessage/CreateMessage';
 import classes from "./DialogMessages.module.css"
 import MessageItem from './MessageItem/MessageItem';
 
@@ -9,7 +10,8 @@ const DialogMessages = (props) => {
 
     return (
         <div className={classes.dialogMessages}>
-            {messagesElements};
+            {messagesElements}
+            <CreateMessage />
         </div>
     )
 }

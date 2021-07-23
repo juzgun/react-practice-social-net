@@ -9,10 +9,13 @@ const MyPosts = (props) => {
 
     return (
         <div>
-            <CreatePost />
+            <CreatePost
+                addPost={props.addPost}
+                newPostText={props.newPostText}
+                updateNewPostText={props.updateNewPostText} />
             <div className={classes.post}>
                 <h3>Posts</h3>
-                {postsElements};
+                {postsElements}
             </div>
         </div >
     )

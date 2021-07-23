@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Dialog from './components/Dialog/Dialog';
 import Friends from './components/Friends/Friends';
@@ -10,6 +10,7 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
+
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -18,12 +19,19 @@ const App = (props) => {
           <Header />
           <Nav />
         </div>
-        <Route path="/dialogs" render={() => <Dialog dialogsPage={props.state.dialogsPage} />} />
-        <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage} />} />
-        <Route path="/friends" render={() => <Friends />} />
-        <Route path="/news" render={() => <News />} />
-        <Route path="/settings" render={() => <Settings />} />
-        <Route path="/music" render={() => <Music />} />
+        <Switch>
+          <Route path="/dialogs" render={() => <Dialog
+            dialogsPage={props.state.dialogsPage} />} />
+          <Route path="/profile" render={() => <Profile
+            profilePage={props.state.profilePage}
+            addPost={props.addPost}
+            updateNewPostText={props.updateNewPostText} />} />
+          <Route path="/friends" render={() => <Friends />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/settings" render={() => <Settings />} />
+          <Route path="/music" render={() => <Music />} />
+          <Redirect to="/profile" />
+        </Switch>
       </div>
     </BrowserRouter>
   );

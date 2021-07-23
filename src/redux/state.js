@@ -1,3 +1,6 @@
+import rerenderEntireTree from './../render'
+
+
 let state = {
     dialogsPage: {
         dialogsData: [
@@ -24,12 +27,33 @@ let state = {
             { id: 2, postMessage: "Thank I'm OK!", likes: 13, shares: 32 },
             { id: 3, postMessage: "When u'll come home?", likes: 24, shares: 2 },
             { id: 4, postMessage: "Next week, I guess...", likes: 4, shares: 1 },
-            { id: 3, postMessage: "When u'll come home?", likes: 24, shares: 2 },
-            { id: 4, postMessage: "Next week, I guess...", likes: 4, shares: 1 },
-            { id: 3, postMessage: "When u'll come home?", likes: 24, shares: 2 },
-            { id: 4, postMessage: "Next week, I guess...", likes: 4, shares: 1 }
-        ]
+            { id: 5, postMessage: "When u'll come home?", likes: 24, shares: 2 },
+            { id: 6, postMessage: "Next week, I guess...", likes: 4, shares: 1 },
+            { id: 7, postMessage: "When u'll come home?", likes: 24, shares: 2 },
+            { id: 8, postMessage: "Next week, I guess...", likes: 4, shares: 1 }
+        ],
+        newPostText: 'crazycow'
     }
+};
+
+window.state = state;
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 5 + 1,
+        postMessage: state.profilePage.newPostText,
+        lekes: 0,
+        shares: 0
+    }
+
+    state.profilePage.postsData.push(newPost);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
 };
 
 export default state;
