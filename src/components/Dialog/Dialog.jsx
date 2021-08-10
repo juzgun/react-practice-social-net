@@ -9,11 +9,13 @@ const Dialog = (props) => {
         <div className={classes.dialog}>
             <div className={classes.dialogTopic}>DIALOGS</div>
             <div className={classes.dialogWrapper}>
-                <AllDialogs dialogsData={props.dialogsPage.dialogsData} />
+                <AllDialogs dialogsData={props.dialogsData} />
                 <DialogMessages
-                    messagesData={props.dialogsPage.messagesData}
-                    addMessage={props.addMessage}
-                    updateNewMessageText={props.updateNewMessageText} />
+                    messagesData={props.messagesData}
+                    newMessageText={props.newMessageText}
+                    onAddMessage={props.addMessage}
+                    clearInput={props.clearMessageInput}
+                    onMessageChange={props.onMessageChange} />
             </div>
         </div>
     )

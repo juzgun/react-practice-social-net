@@ -2,22 +2,22 @@ import React from 'react';
 import classes from './CreatePost.module.css';
 
 
+
+
+
 const CreatePost = (props) => {
-
-
-    let newPostElement = React.createRef();
 
     let addPost = () => {
         props.addPost();
     }
 
     let clearPostInput = () => {
-        props.updateNewPostText('');
+        props.clearPostInput();
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+    let onPostChange = (e) => {
+        debugger;
+        props.onPostChange(e.currentTarget.value);
     };
 
 
@@ -27,7 +27,12 @@ const CreatePost = (props) => {
                 <h3>My posts</h3>
             </div>
             <div>
-                <textarea onChange={onPostChange} placeholder="Do you have some news?" cols="90" rows="3" className={classes.textarea} ref={newPostElement} value={props.newPostText} />
+                <textarea
+                    onChange={onPostChange}
+                    placeholder="Do you have some news?"
+                    cols="90" rows="3"
+                    className={classes.textarea}
+                    value={props.newPostText} />
                 <div>
                     <button onClick={addPost}>Add Post</button>
                     <button onClick={clearPostInput}>Clear</button>

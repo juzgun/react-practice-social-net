@@ -1,4 +1,5 @@
 import React from 'react';
+import { addMessageActionCreator, clearMessageInputActionCreator, onMessageChangeActionCreator } from '../../../../redux/dialogsPageReducer';
 import classes from './CreateMessage.module.css';
 
 const CreateMessage = (props) => {
@@ -6,19 +7,31 @@ const CreateMessage = (props) => {
 
     let newMessageElement = React.createRef();
 
+    // let addMessage = () => {
+    //     props.addMessage();
+    //     newMessageElement.current.value = '';
+    // }
+
+    // let clearMessageInput = () => {
+    //     props.updateNewMessageText('');
+    //     newMessageElement.current.value = '';
+    // }
+
+    // let onMessageChange = () => {
+    //     let text = newMessageElement.current.value;
+    //     props.updateNewMessageText(text);
+    // };
+
     let addMessage = () => {
-        props.addMessage();
-        newMessageElement.current.value = '';
+        props.onAddMessage();
     }
 
     let clearMessageInput = () => {
-        props.updateNewMessageText('');
-        newMessageElement.current.value = '';
+        props.clearInput();
     }
 
     let onMessageChange = () => {
-        let text = newMessageElement.current.value;
-        props.updateNewMessageText(text);
+        props.onMessageChange(newMessageElement.current.value);
     };
 
 
@@ -29,7 +42,8 @@ const CreateMessage = (props) => {
                     placeholder="Type your message" cols="90" rows="2"
                     className={classes.textarea}
                     onChange={onMessageChange}
-                    ref={newMessageElement} />
+                    ref={newMessageElement}
+                    value={props.newMessageText} />
                 <div>
                     <button onClick={addMessage} >
                         Send Message

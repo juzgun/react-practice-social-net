@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Dialog from './components/Dialog/Dialog';
+import DialogContainer from './components/Dialog/DialogContainer';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
 import Music from './components/Music/Music';
@@ -20,14 +20,8 @@ const App = (props) => {
           <Nav />
         </div>
         <Switch>
-          <Route path="/dialogs" render={() => <Dialog
-            dialogsPage={props.state.dialogsPage}
-            addMessage={props.addMessage}
-            updateNewMessageText={props.updateNewMessageText} />} />
-          <Route path="/profile" render={() => <Profile
-            profilePage={props.state.profilePage}
-            addPost={props.addPost}
-            updateNewPostText={props.updateNewPostText} />} />
+          <Route path="/dialogs" render={() => <DialogContainer />} />
+          <Route path="/profile" render={() => <Profile />} />
           <Route path="/friends" render={() => <Friends />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/settings" render={() => <Settings />} />

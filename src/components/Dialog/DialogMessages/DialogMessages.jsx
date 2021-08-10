@@ -12,8 +12,10 @@ const DialogMessages = (props) => {
         <div className={classes.dialogMessages}>
             {messagesElements}
             <CreateMessage
-                addMessage={props.addMessage}
-                updateNewMessageText={props.updateNewMessageText} />
+                newMessageText={props.newMessageText}
+                onAddMessage={props.onAddMessage}
+                clearInput={props.clearInput}
+                onMessageChange={props.onMessageChange} />
         </div>
     )
 }

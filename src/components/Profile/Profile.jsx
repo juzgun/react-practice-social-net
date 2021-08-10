@@ -1,11 +1,10 @@
 import React from 'react';
 import classes from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileName from './ProfileName/ProfileName';
 
 const Profile = (props) => {
-
     return (
         <div className={classes.profile}>
             <div className={classes.mainPic}>
@@ -20,11 +19,7 @@ const Profile = (props) => {
                     <ProfileInfo />
                 </div>
             </div>
-            <MyPosts
-                postsData={props.profilePage.postsData}
-                newPostText={props.profilePage.newPostText}
-                addPost={props.addPost}
-                updateNewPostText={props.updateNewPostText} />
+            <MyPostsContainer />
         </div>
     )
 }

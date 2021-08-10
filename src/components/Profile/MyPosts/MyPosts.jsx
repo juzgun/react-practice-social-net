@@ -4,15 +4,15 @@ import Post from './Post/Post';
 import CreatePost from './createPost/CreatePost.jsx';
 
 const MyPosts = (props) => {
-    let postsElements = props.postsData
+    let postsElements = props.posts
         .map(post => <Post message={post.postMessage} likes={post.likes} shares={post.shares} />)
-
     return (
         <div>
             <CreatePost
+                clearPostInput={props.clearPostInput}
                 addPost={props.addPost}
                 newPostText={props.newPostText}
-                updateNewPostText={props.updateNewPostText} />
+                onPostChange={props.onPostChange} />
             <div className={classes.post}>
                 <h3>Posts</h3>
                 {postsElements}
