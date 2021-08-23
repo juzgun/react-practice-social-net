@@ -1,11 +1,11 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+export const addMessage = () => ({ type: ADD_MESSAGE })
 
-export const onMessageChangeActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text })
+export const onMessageChange = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text })
 
-export const clearMessageInputActionCreator = () => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: '' })
+export const clearMessageInput = () => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: '' })
 
 let initialState = {
     dialogsData: [
@@ -28,23 +28,24 @@ let initialState = {
 };
 
 const dialogsPageReducer = (state = initialState, action) => {
+
     switch (action.type) {
-        case ADD_MESSAGE: {
-            let stateCopy = { ...state };
+        case ADD_MESSAGE:
             let newMessage = {
-                id: stateCopy.dialogsData.length,
+                id: state.dialogsData.length,
                 text: state.newMessageText,
                 age: state.dialogsData[5].age
             }
-            stateCopy.messagesData = [...state.messagesData]
-            stateCopy.messagesData.push(newMessage);
-            stateCopy.newMessageText = '';
-            return stateCopy;
-        }
+            return {
+                ...state,
+                newMessageText: '',
+                messagesData: [...state.messagesData, newMessage]
+            }
         case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = { ...state };
-            stateCopy.newMessageText = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                newMessageText: action.newText,
+            }
         }
         default:
             return state;

@@ -16,7 +16,6 @@ const CreatePost = (props) => {
     }
 
     let onPostChange = (e) => {
-        debugger;
         props.onPostChange(e.currentTarget.value);
     };
 

@@ -1,5 +1,5 @@
 import MyPosts from './MyPosts';
-import { clearPostInputActionCreator, addPostActionCreator, onPostChangeActionCreator } from './../../../redux/profilePageReducer';
+import { clearPostInput, addPost, onPostChange } from './../../../redux/profilePageReducer';
 import { connect } from 'react-redux';
 
 // const MyPostsContainer = (props) => {
@@ -42,22 +42,22 @@ let mapStateToProps = (state) => {
     };
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: () => {
-            dispatch(addPostActionCreator());
-        },
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         addPost: () => {
+//             dispatch(addPostActionCreator());
+//         },
 
-        clearPostInput: () => {
-            dispatch(clearPostInputActionCreator());
-        },
+//         clearPostInput: () => {
+//             dispatch(clearPostInputActionCreator());
+//         },
 
-        onPostChange: (text) => {
-            dispatch(onPostChangeActionCreator(text));
-        }
-    };
-};
+//         onPostChange: (text) => {
+//             dispatch(onPostChangeActionCreator(text));
+//         }
+//     };
+// };
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, {addPost, clearPostInput, onPostChange})(MyPosts);
 
 export default MyPostsContainer;

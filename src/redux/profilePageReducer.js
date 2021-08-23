@@ -1,11 +1,11 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
+export const addPost = () => ({ type: ADD_POST })
 
-export const onPostChangeActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const onPostChange = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
 
-export const clearPostInputActionCreator = () => ({ type: UPDATE_NEW_POST_TEXT, newText: '' })
+export const clearPostInput = () => ({ type: UPDATE_NEW_POST_TEXT, newText: '' })
 
 let initialState = {
     postsData: [
@@ -24,22 +24,23 @@ let initialState = {
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let stateCopy = { ...state };
             let newPost = {
-                id: stateCopy.postsData.length,
+                id: state.postsData.length,
                 postMessage: state.newPostText,
                 lekes: 0,
                 shares: 0
             }
-            stateCopy.postsData = [...state.postsData];
-            stateCopy.postsData.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: ''
+            };
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = { ...state };
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         }
         default:
             return state;

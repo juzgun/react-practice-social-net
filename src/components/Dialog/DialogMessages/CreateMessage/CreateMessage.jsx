@@ -1,26 +1,9 @@
 import React from 'react';
-import { addMessageActionCreator, clearMessageInputActionCreator, onMessageChangeActionCreator } from '../../../../redux/dialogsPageReducer';
 import classes from './CreateMessage.module.css';
 
 const CreateMessage = (props) => {
 
-
     let newMessageElement = React.createRef();
-
-    // let addMessage = () => {
-    //     props.addMessage();
-    //     newMessageElement.current.value = '';
-    // }
-
-    // let clearMessageInput = () => {
-    //     props.updateNewMessageText('');
-    //     newMessageElement.current.value = '';
-    // }
-
-    // let onMessageChange = () => {
-    //     let text = newMessageElement.current.value;
-    //     props.updateNewMessageText(text);
-    // };
 
     let addMessage = () => {
         props.onAddMessage();

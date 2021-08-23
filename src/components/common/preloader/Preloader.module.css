@@ -1,0 +1,42 @@
+.loadingIcon {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    -webkit-animation-name: rotateOut;
+  animation-name: rotateOut;
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-iteration-count:infinite;
+  }
+  @-webkit-keyframes rotateOut {
+  0% {
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotate3d(0, 0, 1, 200deg);
+  transform: rotate3d(0, 0, 1, 200deg);
+  opacity: 0;
+  }
+  }
+  @keyframes rotateOut {
+  0% {
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: rotate3d(0, 0, 1, 200deg);
+  transform: rotate3d(0, 0, 1, 200deg);
+  opacity: 0;
+  }
+  } 
+  
