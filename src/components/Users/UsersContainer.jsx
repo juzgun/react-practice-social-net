@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, setFetchingToggle } from './../../redux/usersPageReducer';
+import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle } from './../../redux/usersPageReducer';
 import { useEffect } from 'react';
 import Users from './Users';
 import { usersAPI } from '../../api/usersAPI';
@@ -21,11 +21,13 @@ export const UsersAPI = (props) => {
     useEffect(() => {
         if (props.users.length === 0) {
             props.setFetchingToggle(true);
+            props.setFollowingInProgressToggle(true);
             usersAPI.getUsers(props.currentPage, props.pageSize)
                 .then(data => {
                     props.setUsers(data.items);
                     props.setTotalUsersCount(data.totalCount);
                     props.setFetchingToggle(false);
+                    props.setFollowingInProgressToggle(false)
                 }
                 )
         };
@@ -40,7 +42,9 @@ export const UsersAPI = (props) => {
             currentPage={props.currentPage}
             follow={props.follow}
             unfollow={props.unfollow}
-            isFetching={props.isFetching}>
+            isFetching={props.isFetching}
+            followingInProgress={props.followingInProgress}
+            setFollowingInProgressToggle={props.setFollowingInProgressToggle} >
         </Users>
     </>
 };
@@ -51,13 +55,14 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     };
 };
 
 const UsersContainer = connect(mapStateToProps, {
     follow, unfollow, setUsers,
-    setCurrentPage, setTotalUsersCount, setFetchingToggle
+    setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle
 })(UsersAPI);
 
 export default UsersContainer;
