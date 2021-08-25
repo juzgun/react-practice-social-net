@@ -31,3 +31,14 @@
   font-size: 24px;
   line-height: 30px;
 }
+
+.loginLink a {
+  padding: 3px;
+  border-bottom: 2px solid darkblue;
+  color: white;
+  text-decoration: none;
+}
+
+.loginLink a:active {
+  color: darkblue;
+}

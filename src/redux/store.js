@@ -40,7 +40,6 @@ let store = {
         }
     },
     _callSubscriber() {
-        console.log('state was changed')
     },
     getState() {
         return this._state;

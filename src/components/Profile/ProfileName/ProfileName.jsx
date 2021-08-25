@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './ProfileName.module.css';
 
-const ProfileName = () => {
+const ProfileName = (props) => {
     return (
         <div className={classes.userName}>
-            Aleksandr Sigonin
+            {props.profile.fullName}
         </div>
     )
 }
