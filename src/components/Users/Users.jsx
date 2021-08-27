@@ -3,7 +3,6 @@ import classes from './Users.module.css';
 import userPhoto from '../../assets/images/default_user_avatar.png';
 import Preloader from '../common/preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
 
 const Users = (props) => {
     let allUsers = props.users.map((user) => {
@@ -17,36 +16,10 @@ const Users = (props) => {
                     </NavLink>
                     <div>
                         {user.followed ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.setFollowingInProgressToggle(true, user.id);
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY": "444b86ce-347b-4a1a-bba0-6d746929aa7c"
-                                }
-                            })
-                                .then(response => {
-                                    if (response.data.resultCode === 0) {
-                                        props.unfollow(user.id);
-                                    }
-                                    props.setFollowingInProgressToggle(false, user.id);
-                                }
-                                )
+                            props.unfollow(user.id);
                         }}>Unfollow</button> :
                             <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                                props.setFollowingInProgressToggle(true, user.id);
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {
-                                        "API-KEY": "444b86ce-347b-4a1a-bba0-6d746929aa7c"
-                                    }
-                                })
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(user.id);
-                                        }
-                                        props.setFollowingInProgressToggle(false, user.id);
-                                    }
-                                    )
+                                props.follow(user.id);
                             }}>Follow</button>}
                     </div>
                 </div>
@@ -76,7 +49,7 @@ const Users = (props) => {
             <div className={classes.pages}>
                 {
                     pages.map((i) => {
-                        if ((i <= 10)
+                        if ((i <= 20)
                         ) return <div className={props.currentPage === i && classes.selectedPage} onClick={() => { props.onPageChanged(i); }}>{i}</div>;
                     })}
             </div>

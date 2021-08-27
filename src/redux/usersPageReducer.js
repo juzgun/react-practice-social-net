@@ -9,9 +9,9 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 
-export const follow = (userId) => ({ type: FOLLOW, userId })
+export const followSucsess = (userId) => ({ type: FOLLOW, userId })
 
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId })
+export const unfollowSucsess = (userId) => ({ type: UNFOLLOW, userId })
 
 export const setUsers = (users) => ({ type: SET_USERS, users })
 
@@ -23,7 +23,7 @@ export const setFetchingToggle = (isFetching) => ({ type: TOGGLE_IS_FETCHING, is
 
 export const setFollowingInProgressToggle = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId })
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setFetchingToggle(true));
         dispatch(setFollowingInProgressToggle(true));
@@ -36,6 +36,34 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
             }
             )
 
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(setFollowingInProgressToggle(true, userId));
+        usersAPI.unfollow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowSucsess(userId));
+                }
+                dispatch(setFollowingInProgressToggle(false, userId));
+            }
+            )
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(setFollowingInProgressToggle(true, userId));
+        usersAPI.follow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSucsess(userId));
+                }
+                dispatch(setFollowingInProgressToggle(false, userId));
+            }
+            )
     }
 }
 

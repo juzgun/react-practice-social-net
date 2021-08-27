@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle, getUsersThunkCreator } from './../../redux/usersPageReducer';
+import { follow, unfollow, setCurrentPage, getUsers, setFollowingInProgressToggle } from './../../redux/usersPageReducer';
 import { useEffect } from 'react';
 import Users from './Users';
-import { usersAPI } from '../../api/usersAPI';
 
 export const UsersAPI = (props) => {
 
@@ -24,8 +23,7 @@ export const UsersAPI = (props) => {
             follow={props.follow}
             unfollow={props.unfollow}
             isFetching={props.isFetching}
-            followingInProgress={props.followingInProgress}
-            setFollowingInProgressToggle={props.setFollowingInProgressToggle} >
+            followingInProgress={props.followingInProgress} >
         </Users>
     </>
 };
@@ -41,9 +39,6 @@ let mapStateToProps = (state) => {
     };
 };
 
-const UsersContainer = connect(mapStateToProps, {
-    follow, unfollow, setUsers,
-    setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle, getUsers: getUsersThunkCreator
-})(UsersAPI);
+const UsersContainer = connect(mapStateToProps, { follow, unfollow, setCurrentPage, setFollowingInProgressToggle, getUsers })(UsersAPI);
 
 export default UsersContainer;
