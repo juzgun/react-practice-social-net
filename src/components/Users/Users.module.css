@@ -50,3 +50,14 @@
   width: 100px;
   height: 100px;
 }
+
+.userItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button {
+  text-align: center;
+}

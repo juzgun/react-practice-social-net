@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle } from './../../redux/usersPageReducer';
+import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle, getUsersThunkCreator } from './../../redux/usersPageReducer';
 import { useEffect } from 'react';
 import Users from './Users';
 import { usersAPI } from '../../api/usersAPI';
@@ -7,31 +7,12 @@ import { usersAPI } from '../../api/usersAPI';
 export const UsersAPI = (props) => {
 
     let onPageChanged = (pageNumber) => {
-        props.setFetchingToggle(true);
-        props.setCurrentPage(pageNumber);
-        usersAPI.getUsers(pageNumber, props.pageSize)
-            .then(data => {
-                props.setFetchingToggle(false);
-                props.setUsers(data.items)
-            }
-            )
-
+        props.getUsers(pageNumber, props.pageSize);
     }
 
     useEffect(() => {
-        if (props.users.length === 0) {
-            props.setFetchingToggle(true);
-            props.setFollowingInProgressToggle(true);
-            usersAPI.getUsers(props.currentPage, props.pageSize)
-                .then(data => {
-                    props.setUsers(data.items);
-                    props.setTotalUsersCount(data.totalCount);
-                    props.setFetchingToggle(false);
-                    props.setFollowingInProgressToggle(false)
-                }
-                )
-        };
-    }, [props])
+        props.getUsers(props.currentPage, props.pageSize);
+    }, [])
 
     return <>
 
@@ -62,7 +43,7 @@ let mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps, {
     follow, unfollow, setUsers,
-    setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle
+    setCurrentPage, setTotalUsersCount, setFetchingToggle, setFollowingInProgressToggle, getUsers: getUsersThunkCreator
 })(UsersAPI);
 
 export default UsersContainer;

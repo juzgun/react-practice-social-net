@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
 import { setUserProfile } from '../../redux/profilePageReducer';
@@ -8,13 +8,16 @@ import { profileAPI } from '../../api/profileAPI';
 const ProfileContainer = (props) => {
     let userId = props.match.params.userId;
     if (!userId) { userId = props.loginedUserId };
+    const setUserProfile = useCallback((data) => {
+        return props.setUserProfile(data)
+    }, [props]);
     useEffect(() => {
         profileAPI.getProfile(userId)
             .then(data => {
-                props.setUserProfile(data);
+                setUserProfile(data);
             }
             )
-    }, [props, userId])
+    }, [userId])
 
     return (
         <Profile {...props} profile={props.profile} />
