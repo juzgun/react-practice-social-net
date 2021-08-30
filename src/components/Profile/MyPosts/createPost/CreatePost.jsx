@@ -7,19 +7,6 @@ import classes from './CreatePost.module.css';
 
 const CreatePost = (props) => {
 
-    let addPost = () => {
-        props.addPost();
-    }
-
-    let clearPostInput = () => {
-        props.clearPostInput();
-    }
-
-    let onPostChange = (e) => {
-        props.onPostChange(e.currentTarget.value);
-    };
-
-
     return (
         <div className={classes.newPost}>
             <div>
@@ -27,14 +14,14 @@ const CreatePost = (props) => {
             </div>
             <div>
                 <textarea
-                    onChange={onPostChange}
+                    onChange={props.onPostChange}
                     placeholder="Do you have some news?"
                     cols="90" rows="3"
                     className={classes.textarea}
                     value={props.newPostText} />
                 <div>
-                    <button onClick={addPost}>Add Post</button>
-                    <button onClick={clearPostInput}>Clear</button>
+                    <button onClick={props.addPost}>Add Post</button>
+                    <button onClick={props.clearPostInput}>Clear</button>
                 </div>
             </div>
         </div>

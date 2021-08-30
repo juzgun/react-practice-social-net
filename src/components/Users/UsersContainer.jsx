@@ -39,6 +39,9 @@ let mapStateToProps = (state) => {
     };
 };
 
-const UsersContainer = connect(mapStateToProps, { follow, unfollow, setCurrentPage, setFollowingInProgressToggle, getUsers })(UsersAPI);
+const UsersContainer = connect(mapStateToProps, {
+    follow, unfollow, setCurrentPage,
+    setFollowingInProgressToggle, getUsers
+})(UsersAPI);
 
 export default UsersContainer;

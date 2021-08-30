@@ -4,7 +4,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 export const addPost = () => ({ type: ADD_POST })
 
-export const onPostChange = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text })
+export const onPostChange = (e) => ({ type: UPDATE_NEW_POST_TEXT, newText: e.currentTarget.value })
 
 export const clearPostInput = () => ({ type: UPDATE_NEW_POST_TEXT, newText: '' })
 
