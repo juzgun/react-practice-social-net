@@ -3,35 +3,19 @@ import classes from './CreateMessage.module.css';
 
 const CreateMessage = (props) => {
 
-    let newMessageElement = React.createRef();
-
-    let addMessage = () => {
-        props.onAddMessage();
-    }
-
-    let clearMessageInput = () => {
-        props.clearInput();
-    }
-
-    let onMessageChange = () => {
-        props.onMessageChange(newMessageElement.current.value);
-    };
-
-
     return (
         <div className={classes.newMessage}>
             <div>
                 <textarea
                     placeholder="Type your message" cols="90" rows="2"
                     className={classes.textarea}
-                    onChange={onMessageChange}
-                    ref={newMessageElement}
+                    onChange={props.onMessageChange}
                     value={props.newMessageText} />
                 <div>
-                    <button onClick={addMessage} >
+                    <button onClick={props.onAddMessage} >
                         Send Message
                     </button>
-                    <button onClick={clearMessageInput}>
+                    <button onClick={props.clearInput}>
                         Clear
                     </button>
                 </div>

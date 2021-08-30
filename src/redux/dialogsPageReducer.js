@@ -3,7 +3,7 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 export const addMessage = () => ({ type: ADD_MESSAGE })
 
-export const onMessageChange = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text })
+export const onMessageChange = (e) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: e.currentTarget.value })
 
 export const clearMessageInput = () => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: '' })
 
