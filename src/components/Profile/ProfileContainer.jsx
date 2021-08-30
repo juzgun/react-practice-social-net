@@ -1,22 +1,15 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../redux/profilePageReducer';
+import { getProfile } from '../../redux/profilePageReducer';
 import { withRouter } from 'react-router-dom';
-import { profileAPI } from '../../api/profileAPI';
 
 const ProfileContainer = (props) => {
     let userId = props.match.params.userId;
     if (!userId) { userId = props.loginedUserId };
-    const setUserProfile = useCallback((data) => {
-        return props.setUserProfile(data)
-    }, [props]);
+
     useEffect(() => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                setUserProfile(data);
-            }
-            )
+        props.getProfile(userId)
     }, [userId])
 
     return (
@@ -31,4 +24,4 @@ let mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, { setUserProfile })(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { getProfile })(WithUrlDataContainerComponent);
