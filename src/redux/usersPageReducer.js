@@ -30,6 +30,7 @@ export const getUsers = (currentPage, pageSize) => {
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(setUsers(data.items));
+                dispatch(setCurrentPage(currentPage));
                 dispatch(setTotalUsersCount(data.totalCount));
                 dispatch(setFetchingToggle(false));
                 dispatch(setFollowingInProgressToggle(false));

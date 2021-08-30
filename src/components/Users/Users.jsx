@@ -50,12 +50,12 @@ const Users = (props) => {
                 {
                     pages.map((i) => {
                         if ((i <= 20)
-                        ) return <div className={props.currentPage === i && classes.selectedPage} onClick={() => { props.onPageChanged(i); }}>{i}</div>;
+                        ) return <div className={(props.currentPage === i) ? classes.selectedPage : classes.paged} onClick={() => { props.onPageChanged(i); }}>{i}</div>;
                     })}
             </div>
             <Preloader isFetching={props.isFetching} />
             {allUsers}
-        </div>
+        </div >
     )
 }
 
