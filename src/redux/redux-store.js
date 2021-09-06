@@ -12,6 +12,7 @@ let reducers = combineReducers({
     auth: authReducer
 });
 
+
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;

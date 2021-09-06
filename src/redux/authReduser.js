@@ -1,7 +1,23 @@
+import { headerAPI } from "../api/headerAPI";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 
 export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } })
+
+export const getAuthUserData = () => {
+    return (dispatch) => {
+        headerAPI.getLogin()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    let { id, email, login } = data.data;
+                    dispatch(setAuthUserData(id, email, login));
+                }
+
+            }
+            )
+    }
+}
 
 let initialState = {
     id: null,

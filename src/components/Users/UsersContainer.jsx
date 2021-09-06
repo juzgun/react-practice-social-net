@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import { follow, unfollow, setCurrentPage, getUsers, setFollowingInProgressToggle } from './../../redux/usersPageReducer';
 import { useEffect } from 'react';
 import Users from './Users';
+import { Redirect } from 'react-router-dom';
+import withAuthRedirect from '../../hoc/WithAuthRedirect';
+import { compose } from 'redux';
 
 export const UsersAPI = (props) => {
 
@@ -35,13 +38,16 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth
     };
 };
 
-const UsersContainer = connect(mapStateToProps, {
-    follow, unfollow, setCurrentPage,
-    setFollowingInProgressToggle, getUsers
-})(UsersAPI);
+const UsersContainer = () => {
+    return compose(withAuthRedirect, connect(mapStateToProps, {
+        follow, unfollow, setCurrentPage,
+        setFollowingInProgressToggle, getUsers
+    }))(UsersAPI);
+};
 
 export default UsersContainer;

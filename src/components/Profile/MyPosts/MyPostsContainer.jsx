@@ -1,6 +1,8 @@
 import MyPosts from './MyPosts';
 import { clearPostInput, addPost, onPostChange } from './../../../redux/profilePageReducer';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import withAuthRedirect from '../../../hoc/WithAuthRedirect';
 
 
 let mapStateToProps = (state) => {
@@ -10,6 +12,8 @@ let mapStateToProps = (state) => {
     };
 };
 
-const MyPostsContainer = connect(mapStateToProps, { addPost, clearPostInput, onPostChange })(MyPosts);
+const MyPostsContainer = () => {
+    return compose(withAuthRedirect, connect(mapStateToProps, { addPost, clearPostInput, onPostChange }))(MyPosts);
+};
 
 export default MyPostsContainer;
