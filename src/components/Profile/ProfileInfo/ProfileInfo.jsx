@@ -1,14 +1,12 @@
 import React from 'react';
 import classes from './ProfileInfo.module.css';
-import Status from './ProfileStatus.jsx'
+import ProfileStatus from './ProfileStatus.jsx'
 
 const ProfileInfo = (props) => {
     return (
         <div className={classes.userInfo}>
             <p>
-                {/* Обо мне {props.profile.aboutMe ? props.profile.aboutMe : "No data"} */}
-                <Status status='hi devs!' />
-
+                <ProfileStatus status={props.status} updateProfileStatus={props.updateProfileStatus} />
             </p>
             <p>
                 В активном поиске работы: {props.profile.lookingForAJob ? "Да" : "Нет"}

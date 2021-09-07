@@ -25,7 +25,7 @@ const Profile = (props) => {
                     </div>
                     <div>
                         <ProfileName profile={props.profile} />
-                        <ProfileInfo profile={props.profile} />
+                        <ProfileInfo profile={props.profile} status={props.status} updateProfileStatus={props.updateProfileStatus} />
                     </div>
                 </div>
                 <MyPostsContainer />

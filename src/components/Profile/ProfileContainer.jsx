@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getProfile } from '../../redux/profilePageReducer';
+import { getProfile, getProfileStatus, updateProfileStatus } from '../../redux/profilePageReducer';
 import { withRouter } from 'react-router-dom';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
 import { compose } from 'redux';
@@ -11,25 +11,31 @@ const ProfileContainer = (props) => {
     if (!userId) { userId = props.loginedUserId };
 
     useEffect(() => {
-        props.getProfile(userId)
-    }, [userId])
+        props.getProfile(userId);
+        // setTimeout(() => {
+        props.getProfileStatus(userId);
+        // }, 1000)
+
+    }, [props.status, userId])
 
     return (
-        <Profile {...props} profile={props.profile} />
+        <Profile {...props} profile={props.profile} status={props.status} updateProfileStatus={props.updateProfileStatus} />
     )
 }
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     loginedUserId: state.auth.id,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    status: state.profilePage.status
 })
 
 const ProfilePage = () => {
     return compose(
         withAuthRedirect,
-        connect(mapStateToProps, { getProfile }),
-        withRouter)(ProfileContainer);
+        withRouter,
+        connect(mapStateToProps, { getProfile, getProfileStatus, updateProfileStatus })
+    )(ProfileContainer);
 };
 
 export default ProfilePage;
