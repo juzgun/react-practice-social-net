@@ -1,4 +1,5 @@
 import { headerAPI } from "../api/headerAPI";
+import { loginAPI } from "../api/loginAPI";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -12,6 +13,21 @@ export const getAuthUserData = () => {
                 if (data.resultCode === 0) {
                     let { id, email, login } = data.data;
                     dispatch(setAuthUserData(id, email, login));
+                }
+
+            }
+            )
+    }
+}
+
+export const postLoginData = (formData) => {
+    return (dispatch) => {
+        loginAPI.postLogin(formData)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    debugger;
+                    let id = data.data.userId;
+                    dispatch(setAuthUserData(id, formData.email, null));
                 }
 
             }

@@ -1,11 +1,6 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-export const addMessage = () => ({ type: ADD_MESSAGE })
-
-export const onMessageChange = (e) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: e.currentTarget.value })
-
-export const clearMessageInput = () => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: '' })
+export const addMessage = (values) => ({ type: ADD_MESSAGE, newMessageFormText: values.newMessageText })
 
 let initialState = {
     dialogsData: [
@@ -23,8 +18,7 @@ let initialState = {
         { id: 4, text: "Ann Alo hellow", age: 22 },
         { id: 5, text: "Bob Alo hellow", age: 18 },
         { id: 6, text: "Nik Alo hellow", age: 26 }
-    ],
-    newMessageText: ''
+    ]
 };
 
 const dialogsPageReducer = (state = initialState, action) => {
@@ -33,7 +27,7 @@ const dialogsPageReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             let newMessage = {
                 id: state.dialogsData.length,
-                text: state.newMessageText,
+                text: action.newMessageFormText,
                 age: state.dialogsData[5].age
             }
             return {
@@ -41,12 +35,6 @@ const dialogsPageReducer = (state = initialState, action) => {
                 newMessageText: '',
                 messagesData: [...state.messagesData, newMessage]
             }
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            return {
-                ...state,
-                newMessageText: action.newText,
-            }
-        }
         default:
             return state;
     }
