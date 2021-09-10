@@ -1,3 +1,22 @@
 .loginPage {
     background-color: yellow;
+    margin: 5px;
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      -ms-border-radius: 12px;
+      -o-border-radius: 12px;
+      -webkit-box-shadow: -5px -5px 20px -9px #fff;
+      -moz-box-shadow: -5px -5px 20px -9px #fff;
+      box-shadow: -5px -5px 20px -9px #fff;
+      width: 980px;
+}
+
+.loginFormWrapper {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
 }
