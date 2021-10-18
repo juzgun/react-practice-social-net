@@ -7,7 +7,6 @@ import CreatePostReduxForm from './CreatePostForm';
 
 
 const CreatePost = (props) => {
-
     return (
         <div className={classes.newPost}>
             <div>

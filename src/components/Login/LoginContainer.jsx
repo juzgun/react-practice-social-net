@@ -1,21 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { postLoginData } from '../../redux/authReduser';
-import Login from './Login';
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { postLoginData, deleteLoginData } from '../../redux/authReduser';
+// import Login from './Login';
 
 
-const LoginContainer = (props) => {
+// const LoginContainer = () => {
+//     return (
+//         <Login />
+//     )
+// }
 
-    const onSubmit = (formData) => {
-        postLoginData(formData);
-    }
+// let mapStateToProps = (state) => ({
+//     isAuth: state.auth.isAuth
+// })
 
-    return (
-        <Login onSubmit={onSubmit} postLoginData={postLoginData} />
-    )
-}
-
-let mapStateToProps = (state) => ({
-})
-
-export default connect(mapStateToProps, { postLoginData })(LoginContainer);
+// export default connect(mapStateToProps, { postLoginData, deleteLoginData })(LoginContainer);

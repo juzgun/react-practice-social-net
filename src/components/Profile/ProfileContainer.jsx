@@ -12,9 +12,7 @@ const ProfileContainer = (props) => {
 
     useEffect(() => {
         props.getProfile(userId);
-        // setTimeout(() => {
         props.getProfileStatus(userId);
-        // }, 1000)
 
     }, [props.status, userId])
 

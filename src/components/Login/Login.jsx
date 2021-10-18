@@ -1,18 +1,33 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import classes from './Login.module.css';
 import LoginReduxForm from './LoginForm/LoginForm';
-
+import { connect } from 'react-redux';
+import { postLoginData, deleteLoginData } from '../../redux/authReduser';
 
 const Login = (props) => {
-    
+
+    const onSubmit = (formData) => {
+        props.postLoginData(formData);
+        console.log(formData);
+    }
+
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
+    }
+
     return (
         <div className={classes.loginPage}>
             <div className={classes.loginFormWrapper}>
                 <h1>Login</h1>
-                <LoginReduxForm onSubmit={props.onSubmit} />
+                <LoginReduxForm onSubmit={onSubmit} />
             </div>
         </div>
     )
 }
 
-export default Login;
+let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, { postLoginData, deleteLoginData })(Login);

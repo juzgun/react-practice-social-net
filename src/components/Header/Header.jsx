@@ -11,16 +11,16 @@ const Header = (props) => {
             <div className={classes.name}>
                 Lava Net
                 <div className={classes.loginLink}>
-                    {props.isAuth ? props.login : <div><NavLink to={'/login'}>
+                    {props.isAuth ? <div>{props.login} <button onClick={props.deleteLoginData}>Log Out</button></div> : <NavLink to={'/login'}>
                         Login
                     </NavLink>
-                    </div>}
+                    }
 
                 </div>
             </div>
 
 
-        </header>
+        </header >
     )
 }
 
