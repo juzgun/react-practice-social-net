@@ -18,6 +18,11 @@ const LoginForm = (props) => {
                 <div>
                     <Field component={Input} name={'checkbox'} type={'checkbox'} validate={[required]} /> remember me
                 </div>
+                {
+                    props.error && <div className={classes.form_summary_error}>
+                        {props.error}
+                    </div>
+                }
                 <div>
                     <button>Login</button>
                 </div>

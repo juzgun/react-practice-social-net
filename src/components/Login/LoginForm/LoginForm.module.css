@@ -6,3 +6,10 @@
     align-content: center;
 
 }
+
+
+.loginForm .form_summary_error {
+    color: red;
+    padding: 5px 10px;
+}
+

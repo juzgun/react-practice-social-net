@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { headerAPI } from "../api/headerAPI";
 import { loginAPI } from "../api/loginAPI";
 
@@ -26,6 +27,9 @@ export const postLoginData = (formData) => (dispatch) => {
             if (data.resultCode === 0) {
                 let id = data.data.userId;
                 dispatch(setAuthUserData(id, formData.email, null, true));
+            } else {
+                let error_message = data.data.messages.length > 0 ? data.data.messages[0] : "Undefined error";
+                dispatch(stopSubmit("login", { _error: error_message }));
             }
 
         })

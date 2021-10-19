@@ -19,7 +19,7 @@ const CreateMessageForm = (props) => {
                 validate={[required, maxLength50]} />
             <div>
                 <button>
-                    Send2
+                    Send
                 </button>
                 <button onClick={props.reset}>
                     Clear
