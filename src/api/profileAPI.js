@@ -12,4 +12,3 @@ export const profileAPI = {
         return await instance.put(`profile/status`, { status: status })
     }
 }
-

@@ -19,25 +19,25 @@ export const getAuthUserData = () => (dispatch) => {
         )
 }
 
-export const postLoginData = (formData) => (dispatch) => {
-    loginAPI.postLogin(formData)
-        .then(data => {
-            if (data.resultCode === 0) {
-                let id = data.data.userId;
-                dispatch(setAuthUserData(id, formData.email, null, true));
-            } else {
-                let error_message = data.data.messages.length > 0 ? data.data.messages[0] : "Undefined error";
-                dispatch(stopSubmit("login", { _error: error_message }));
-            }
+export const postLoginData = (formData) => async (dispatch) => {
+    try {
+        const response = await loginAPI.postLogin(formData)
+        if (response.data.resultCode === 0) {
+            let id = response.data.data.userId;
+            dispatch(setAuthUserData(id, formData.email, null, true));
+        } else {
+            let error_message = response.data.data.messages.length > 0 ? response.data.data.messages[0] : "Undefined error";
+            dispatch(stopSubmit("login", { _error: error_message }));
+        }
+    } catch (error) {
 
-        })
+    }
 }
 
 
 export const deleteLoginData = () => async (dispatch) => {
     try {
         const response = await loginAPI.deleteLogin()
-        // const data = await response.json()
         if (response.data.resultCode === 0) {
             dispatch(setAuthUserData(null, null, null, false))
         }
