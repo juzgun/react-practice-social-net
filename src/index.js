@@ -1,5 +1,3 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store'
@@ -15,14 +13,6 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-
-
-
-// rerenderEntireTree(store);
-
-// store.subscribe(() => {
-//     rerenderEntireTree(store);
-// });
 
 
 reportWebVitals();

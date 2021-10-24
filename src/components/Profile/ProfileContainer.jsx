@@ -8,13 +8,17 @@ import { compose } from 'redux';
 
 const ProfileContainer = (props) => {
     let userId = props.match.params.userId;
-    if (!userId) { userId = props.loginedUserId };
+    if (!userId) {
+        userId = props.loginedUserId;
+        if (!userId) {
+            props.history.push('/login')
+        }
+    };
 
     useEffect(() => {
         props.getProfile(userId);
         props.getProfileStatus(userId);
-
-    }, [props.status, userId])
+    }, [userId])
 
     return (
         <Profile {...props} profile={props.profile} status={props.status} updateProfileStatus={props.updateProfileStatus} />

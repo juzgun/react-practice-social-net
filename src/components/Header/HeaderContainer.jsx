@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from './Header';
-import { getAuthUserData, deleteLoginData } from '../../redux/authReduser';
 import { connect } from 'react-redux';
+import { deleteLoginData } from '../../redux/authReduser';
 
 const HeaderContainer = (props) => {
-    useEffect(() => {
-        props.getAuthUserData();
-    }, [props])
+
+    // useEffect(() => {
+    //     props.getAuthUserData();
+    // }, [props]);
+
     return (
         <Header {...props} />
     )
@@ -17,4 +19,4 @@ let mapStateToProps = (state) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, { getAuthUserData, deleteLoginData })(HeaderContainer);
+export default connect(mapStateToProps, { deleteLoginData })(HeaderContainer);

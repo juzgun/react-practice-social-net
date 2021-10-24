@@ -41,6 +41,7 @@ const Users = (props) => {
         pages.push(i);
     }
 
+
     return (
         <div className={classes.users}>
             <div className={classes.mainPic}>
@@ -53,8 +54,7 @@ const Users = (props) => {
                         ) return <div className={(props.currentPage === i) ? classes.selectedPage : classes.paged} onClick={() => { props.onPageChanged(i); }}>{i}</div>;
                     })}
             </div>
-            <Preloader isFetching={props.isFetching} />
-            {allUsers}
+            <div>{(props.isFetching) ? <Preloader /> : allUsers}</div>
         </div >
     )
 }

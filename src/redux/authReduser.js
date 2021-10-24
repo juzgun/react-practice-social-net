@@ -7,18 +7,16 @@ const SET_USER_DATA = 'SET_USER_DATA';
 
 export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } })
 
-export const getAuthUserData = () => {
-    return (dispatch) => {
-        headerAPI.getLogin()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    let { id, email, login } = data.data;
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-
+export const getAuthUserData = () => (dispatch) => {
+    return headerAPI.getLogin()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let { id, email, login } = data.data;
+                dispatch(setAuthUserData(id, email, login, true));
             }
-            )
-    }
+
+        }
+        )
 }
 
 export const postLoginData = (formData) => (dispatch) => {
@@ -36,16 +34,17 @@ export const postLoginData = (formData) => (dispatch) => {
 }
 
 
-export const deleteLoginData = () => (dispatch) => {
-    loginAPI.deleteLogin()
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null, false));
-            }
-
-        })
+export const deleteLoginData = () => async (dispatch) => {
+    try {
+        const response = await loginAPI.deleteLogin()
+        // const data = await response.json()
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
-
 
 let initialState = {
     id: null,
