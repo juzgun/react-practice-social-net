@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
 
 const Header = (props) => {
-    console.log(props.deleteLoginData)
     return (
         <header className={classes.header}>
             <div className={classes.img}>
@@ -12,7 +11,7 @@ const Header = (props) => {
             <div className={classes.name}>
                 Lava Net
                 <div className={classes.loginLink}>
-                    {props.isAuth ? <div>{props.login} <button onClick={() => {props.deleteLoginData()}}>Log Out</button></div> : <NavLink to={'/login'}>
+                    {props.isAuth ? <div>{props.login} <button onClick={() => { props.deleteLoginData() }}>Log Out</button></div> : <NavLink to={'/login'}>
                         Login
                     </NavLink>
                     }

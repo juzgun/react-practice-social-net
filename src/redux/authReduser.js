@@ -26,11 +26,11 @@ export const postLoginData = (formData) => async (dispatch) => {
             let id = response.data.data.userId;
             dispatch(setAuthUserData(id, formData.email, null, true));
         } else {
-            let error_message = response.data.data.messages.length > 0 ? response.data.data.messages[0] : "Undefined error";
+            let error_message = response.data.messages.length > 0 ? response.data.messages[0] : "Undefined error";
             dispatch(stopSubmit("login", { _error: error_message }));
         }
     } catch (error) {
-
+        console.log(error)
     }
 }
 
@@ -38,6 +38,7 @@ export const postLoginData = (formData) => async (dispatch) => {
 export const deleteLoginData = () => async (dispatch) => {
     try {
         const response = await loginAPI.deleteLogin()
+        // const data = await response.json()
         if (response.data.resultCode === 0) {
             dispatch(setAuthUserData(null, null, null, false))
         }
