@@ -3,7 +3,7 @@ import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import CreatePost from './createPost/CreatePost.jsx';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
     let postsElements = props.posts
         .map(post => <Post message={post.postMessage} likes={post.likes} shares={post.shares} />)
     return (
@@ -19,6 +19,6 @@ const MyPosts = (props) => {
             </div>
         </div >
     )
-}
+})
 
 export default MyPosts;
