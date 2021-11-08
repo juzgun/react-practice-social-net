@@ -1,60 +1,23 @@
 import React from 'react';
 import classes from './Users.module.css';
-import userPhoto from '../../assets/images/default_user_avatar.png';
 import Preloader from '../common/preloader/Preloader';
-import { NavLink } from 'react-router-dom';
+import Pages from "../common/Paginator/Paginator";
+import User from "./User";
 
-const Users = (props) => {
-    let allUsers = props.users.map((user) => {
+const Users = ({currentPage, onPageChanged, totalItemsCount, pageSize, portionSize, users, isFetching, followingInProgress, unfollow, follow, ...props}) => {
+    let allUsers = users.map((user) => {
         return (
-            <div key={user.id} className={classes.userItem}>
-                <div>
-                    <NavLink to={"/profile/" + user.id}>
-                        <div className={classes.avatar}>
-                            <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="user avatar"></img>
-                        </div>
-                    </NavLink>
-                    <div>
-                        {user.followed ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                            props.unfollow(user.id);
-                        }}>Unfollow</button> :
-                            <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                                props.follow(user.id);
-                            }}>Follow</button>}
-                    </div>
-                </div>
-                <div>
-                    <div>{user.name}</div>
-                    <div>{user.followed}</div>
-                    <div>{user.status}</div>
-                    <div>user.location.country</div>
-                    <div>user.location.city</div>
-                </div>
-            </div>
+            <User user={user} followingInProgress={followingInProgress} unfollow={unfollow} follow={follow} props={{...props}}/>
         );
     });
-
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-
 
     return (
         <div className={classes.users}>
             <div className={classes.mainPic}>
                 <img src="https://media.istockphoto.com/vectors/retro-city-wide-banner-vector-id466052873" alt="main pic" className={classes.mainPic}></img>
             </div>
-            <div className={classes.pages}>
-                {
-                    pages.map((i) => {
-                        if ((i <= 20)
-                        ) return <div className={(props.currentPage === i) ? classes.selectedPage : classes.paged} onClick={() => { props.onPageChanged(i); }}>{i}</div>;
-                    })}
-            </div>
-            <div>{(props.isFetching) ? <Preloader /> : allUsers}</div>
+            <Pages currentPage={currentPage} onPageChanged={onPageChanged} totalItemsCount={totalItemsCount} pageSize={pageSize} portionSize={portionSize}/>
+            <div>{(isFetching) ? <Preloader /> : allUsers}</div>
         </div >
     )
 }

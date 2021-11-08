@@ -5,11 +5,11 @@ import classes from './ProfileInfo.module.css';
 
 const ProfileStatus = (props) => {
 
-    let status = '---------'
+    let status = '---------';
 
-    if (!props.status) {
-        status = props.status
-    }
+    if (props.status != null || undefined) {
+        status = props.status;
+    };
 
     const [editMode, setEditMode] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(status);
@@ -23,7 +23,7 @@ const ProfileStatus = (props) => {
         <div className={classes.userStatus}>
             {!editMode &&
                 <div>
-                    Статус: <span onClick={() => setEditMode(!editMode)}>{currentStatus || '----'}</span>
+                    Статус: <span onDoubleClick={() => setEditMode(!editMode)}>{currentStatus || '----'}</span>
                 </div>}
             {editMode &&
                 <div>

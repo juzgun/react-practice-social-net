@@ -10,35 +10,21 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            })
-    }
+export const getProfile = (userId) => async (dispatch) => {
+    const data = await profileAPI.getProfile(userId)
+    dispatch(setUserProfile(data));
 }
 
-export const getProfileStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(data => {
-                dispatch(setUserStatus(data.data));
-            }
-            )
-    }
+export const getProfileStatus = (userId) => async (dispatch) => {
+    let data = await profileAPI.getStatus(userId);
+    dispatch(setUserStatus(data.data));
 }
 
-export const updateProfileStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setUserStatus(status))
-                };
-            }
-            )
-    }
+export const updateProfileStatus = (status) => async (dispatch) => {
+    const response = await  profileAPI.updateStatus(status)
+    if (response.resultCode === 0) {
+        dispatch(setUserStatus(status))
+    };
 }
 
 let initialState = {
@@ -62,7 +48,7 @@ const profilePageReducer = (state = initialState, action) => {
             let newPost = {
                 id: state.postsData.length,
                 postMessage: action.newPostFormText,
-                lekes: 0,
+                likes: 0,
                 shares: 0
             }
             return {

@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus.jsx'
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({status, updateProfileStatus, ...props}) => {
     return (
         <div className={classes.userInfo}>
             <p>
-                <ProfileStatus status={props.status} updateProfileStatus={props.updateProfileStatus} />
+                <ProfileStatus status={status} updateProfileStatus={updateProfileStatus} />
             </p>
             <p>
                 В активном поиске работы: {props.profile.lookingForAJob ? "Да" : "Нет"}

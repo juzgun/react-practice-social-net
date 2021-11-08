@@ -2,21 +2,17 @@ import { stopSubmit } from "redux-form";
 import { headerAPI } from "../api/headerAPI";
 import { loginAPI } from "../api/loginAPI";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'auth/SET_USER_DATA';
 
 
 export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } })
 
-export const getAuthUserData = () => (dispatch) => {
-    return headerAPI.getLogin()
-        .then(data => {
-            if (data.resultCode === 0) {
-                let { id, email, login } = data.data;
+export const getAuthUserData = () => async (dispatch) => {
+    let result = await headerAPI.getLogin()
+            if (result.resultCode === 0) {
+                let { id, email, login } = result.data;
                 dispatch(setAuthUserData(id, email, login, true));
             }
-
-        }
-        )
 }
 
 export const postLoginData = (formData) => async (dispatch) => {
@@ -56,7 +52,7 @@ let initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case 'auth/SET_USER_DATA':
             return {
                 ...state, ...action.data
             }

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Users from './Users';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
 import { compose } from 'redux';
-import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsersSuper } from '../../redux/users-selectors';
+import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getPortionSize, getTotalUsersCount, getUsersSuper } from '../../redux/users-selectors';
 
 export const UsersAPI = (props) => {
 
@@ -19,14 +19,15 @@ export const UsersAPI = (props) => {
     return <>
 
         <Users users={props.users}
-            totalUsersCount={props.totalUsersCount}
+            totalItemsCount={props.totalUsersCount}
             onPageChanged={onPageChanged}
             pageSize={props.pageSize}
             currentPage={props.currentPage}
             follow={props.follow}
             unfollow={props.unfollow}
             isFetching={props.isFetching}
-            followingInProgress={props.followingInProgress} >
+            followingInProgress={props.followingInProgress}
+            portionSize={props.portionSize}>
         </Users>
     </>
 };
@@ -35,6 +36,7 @@ let mapStateToProps = (state) => {
     return {
         users: getUsersSuper(state),
         pageSize: getPageSize(state),
+        portionSize: getPortionSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),

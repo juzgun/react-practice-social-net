@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import './App.css';
 import DialogContainer from './components/Dialog/DialogContainer';
 import Friends from './components/Friends/Friends';
@@ -13,8 +13,10 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import { useEffect } from 'react';
 import { initializeApp } from './redux/appReduser';
-import { connect } from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import Preloader from './components/common/preloader/Preloader';
+import {compose} from "redux";
+import store from "./redux/redux-store";
 
 const App = (props) => {
 
@@ -26,7 +28,6 @@ const App = (props) => {
     return <div><Preloader /></div>
   } else {
     return (
-      <BrowserRouter>
         <div className="flex app-wrapper">
           <div className="sidebar">
             <HeaderContainer />
@@ -44,7 +45,6 @@ const App = (props) => {
             <Redirect to="/profile" />
           </Switch>
         </div>
-      </BrowserRouter>
     );
   }
 }
@@ -53,4 +53,14 @@ let mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default connect(mapStateToProps, { initializeApp })(App);
+let AppContainer =  compose( withRouter, connect(mapStateToProps, { initializeApp }))(App);
+
+const MainApp = (props) => {
+  return <BrowserRouter>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  </BrowserRouter>
+}
+
+export default MainApp;

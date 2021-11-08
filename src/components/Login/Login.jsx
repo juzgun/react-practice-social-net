@@ -5,14 +5,13 @@ import LoginReduxForm from './LoginForm/LoginForm';
 import { connect } from 'react-redux';
 import { postLoginData, deleteLoginData } from '../../redux/authReduser';
 
-const Login = (props) => {
+const Login = ({postLoginData, isAuth}) => {
 
     const onSubmit = (formData) => {
-        props.postLoginData(formData);
+        postLoginData(formData);
         console.log(formData);
     }
-
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"/profile"} />
     }
 
