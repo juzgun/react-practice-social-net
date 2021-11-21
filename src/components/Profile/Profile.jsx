@@ -4,9 +4,17 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileName from './ProfileName/ProfileName';
 import Preloader from '../common/preloader/Preloader';
+import userPhoto from '../../assets/images/default_user_avatar.png';
 
-const Profile = (props) => {
-    if (!props.profile) {
+const Profile = ({profile, status, updateProfileStatus, isOwner, savePhoto}) => {
+    const onAvaPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            savePhoto(e.target.files[0])
+        }
+    }
+    console.log('profileRender')
+
+    if (!profile) {
         return (
             <div className={classes.profile}>
                 <Preloader />
@@ -21,11 +29,12 @@ const Profile = (props) => {
                 </div>
                 <div className={classes.user}>
                     <div>
-                        <img src={props.profile.photos.large} alt="profile avatar" className={classes.ava}></img>
+                        <img src={profile.photos.large || userPhoto} alt="profile avatar" className={classes.ava}></img>
+                        {isOwner && <input type={'file'} onChange={(e)=>{onAvaPhotoSelected(e)}}></input>}
                     </div>
                     <div>
-                        <ProfileName profile={props.profile} />
-                        <ProfileInfo profile={props.profile} status={props.status} updateProfileStatus={props.updateProfileStatus} />
+                        <ProfileName profile={profile} />
+                        <ProfileInfo profile={profile} status={status} updateProfileStatus={updateProfileStatus} />
                     </div>
                 </div>
                 <MyPostsContainer />

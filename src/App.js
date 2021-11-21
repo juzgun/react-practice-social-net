@@ -1,5 +1,5 @@
-import React, {Suspense} from 'react';
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, HashRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
@@ -60,11 +60,11 @@ let mapStateToProps = (state) => ({
 let AppContainer =  compose( withRouter, connect(mapStateToProps, { initializeApp }))(App);
 
 const MainApp = (props) => {
-  return <BrowserRouter>
+  return <HashRouter>
     <Provider store={store}>
       <AppContainer />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 }
 
 export default MainApp;
