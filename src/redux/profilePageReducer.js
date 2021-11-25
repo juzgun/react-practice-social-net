@@ -1,14 +1,17 @@
 import { profileAPI } from "../api/profileAPI";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
+
 export const addPost = (values) => ({ type: ADD_POST, newPostFormText: values.newPostText })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos })
+
 
 export const getProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getProfile(userId)
@@ -32,6 +35,18 @@ export const savePhoto = (file) => async (dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
     };
+}
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.id;
+    const response = await  profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        dispatch(getProfile(userId));
+    } else {
+        let error_message = response.data.messages.length > 0 ? response.data.messages[0] : "Undefined error";
+        dispatch(stopSubmit('editProfile', {"contacts": {facebook: error_message} }));
+        return Promise.reject(error_message);
+    }
 }
 
 let initialState = {

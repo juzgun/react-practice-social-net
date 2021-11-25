@@ -9,7 +9,6 @@ const Login = ({postLoginData, isAuth}) => {
 
     const onSubmit = (formData) => {
         postLoginData(formData);
-        console.log(formData);
     }
     if (isAuth) {
         return <Redirect to={"/profile"} />

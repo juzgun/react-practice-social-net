@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import classes from './ProfileInfo.module.css';
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({isOwner, ...props}) => {
 
     let status = '---------';
 
@@ -23,7 +23,7 @@ const ProfileStatus = (props) => {
         <div className={classes.userStatus}>
             {!editMode &&
                 <div>
-                    Статус: <span onDoubleClick={() => setEditMode(!editMode)}>{currentStatus || '----'}</span>
+                    Статус: <span onDoubleClick={() => {if (isOwner) {setEditMode(!editMode)}}}>{currentStatus || 'no status'}</span>
                 </div>}
             {editMode &&
                 <div>

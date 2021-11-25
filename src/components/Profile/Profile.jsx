@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './Profile.module.css';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileName from './ProfileName/ProfileName';
 import Preloader from '../common/preloader/Preloader';
 import userPhoto from '../../assets/images/default_user_avatar.png';
+import ProfileInfoForm from "./ProfileInfo/ProfileInfoForm";
 
-const Profile = ({profile, status, updateProfileStatus, isOwner, savePhoto}) => {
+const Profile = ({profile, status, updateProfileStatus, isOwner, savePhoto, saveProfile}) => {
+
+    const [editMode, setEditMode] = useState(false);
+
+    const onSubmit = (formData) => {
+        saveProfile(formData, profile.userId).then(
+            () => {
+                setEditMode(!editMode);
+            })
+    }
+
     const onAvaPhotoSelected = (e) => {
         if (e.target.files.length) {
             savePhoto(e.target.files[0])
         }
     }
-    console.log('profileRender')
 
     if (!profile) {
         return (
@@ -34,7 +44,15 @@ const Profile = ({profile, status, updateProfileStatus, isOwner, savePhoto}) => 
                     </div>
                     <div>
                         <ProfileName profile={profile} />
-                        <ProfileInfo profile={profile} status={status} updateProfileStatus={updateProfileStatus} />
+                        {!editMode ? <ProfileInfo profile={profile}
+                                                  status={status}
+                                                  updateProfileStatus={updateProfileStatus}
+                                                  setEditMode={() => setEditMode(!editMode)}
+                                                  isOwner={isOwner}/>
+                        : <ProfileInfoForm initialValues={profile}
+                                           profile={profile}
+                                           onSubmit={onSubmit}
+                                           setEditMode={() => setEditMode(!editMode)}/>}
                     </div>
                 </div>
                 <MyPostsContainer />
@@ -43,5 +61,6 @@ const Profile = ({profile, status, updateProfileStatus, isOwner, savePhoto}) => 
     }
 
 }
+
 
 export default Profile;

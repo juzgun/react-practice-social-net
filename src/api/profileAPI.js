@@ -19,5 +19,8 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
-    }
+    },
+    async saveProfile(profile) {
+        return await instance.put(`profile`, profile)
+    },
 }

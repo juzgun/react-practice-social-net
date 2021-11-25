@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'dialogs/ADD-MESSAGE';
 
 export const addMessage = (values) => ({ type: ADD_MESSAGE, newMessageFormText: values.newMessageText })
 
@@ -24,7 +24,7 @@ let initialState = {
 const dialogsPageReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case 'dialogs/ADD-MESSAGE':
             let newMessage = {
                 id: state.dialogsData.length,
                 text: action.newMessageFormText,
