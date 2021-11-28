@@ -3,10 +3,10 @@
     "static/js/0.eb44055c.chunk.js": "/react-practice-social-net/static/js/0.eb44055c.chunk.js",
     "static/js/0.eb44055c.chunk.js.map": "/react-practice-social-net/static/js/0.eb44055c.chunk.js.map",
     "main.css": "/react-practice-social-net/static/css/main.706c02a8.chunk.css",
-    "main.js": "/react-practice-social-net/static/js/main.57d69520.chunk.js",
-    "main.js.map": "/react-practice-social-net/static/js/main.57d69520.chunk.js.map",
-    "runtime-main.js": "/react-practice-social-net/static/js/runtime-main.0f59d764.js",
-    "runtime-main.js.map": "/react-practice-social-net/static/js/runtime-main.0f59d764.js.map",
+    "main.js": "/react-practice-social-net/static/js/main.26b924c0.chunk.js",
+    "main.js.map": "/react-practice-social-net/static/js/main.26b924c0.chunk.js.map",
+    "runtime-main.js": "/react-practice-social-net/static/js/runtime-main.cb997bf8.js",
+    "runtime-main.js.map": "/react-practice-social-net/static/js/runtime-main.cb997bf8.js.map",
     "static/js/3.3846512f.chunk.js": "/react-practice-social-net/static/js/3.3846512f.chunk.js",
     "static/js/3.3846512f.chunk.js.map": "/react-practice-social-net/static/js/3.3846512f.chunk.js.map",
     "static/css/4.36b31697.chunk.css": "/react-practice-social-net/static/css/4.36b31697.chunk.css",
@@ -16,8 +16,8 @@
     "static/js/5.6ffd2f2c.chunk.js": "/react-practice-social-net/static/js/5.6ffd2f2c.chunk.js",
     "static/js/5.6ffd2f2c.chunk.js.map": "/react-practice-social-net/static/js/5.6ffd2f2c.chunk.js.map",
     "static/css/6.d276bb1b.chunk.css": "/react-practice-social-net/static/css/6.d276bb1b.chunk.css",
-    "static/js/6.909b1a8d.chunk.js": "/react-practice-social-net/static/js/6.909b1a8d.chunk.js",
-    "static/js/6.909b1a8d.chunk.js.map": "/react-practice-social-net/static/js/6.909b1a8d.chunk.js.map",
+    "static/js/6.593c7784.chunk.js": "/react-practice-social-net/static/js/6.593c7784.chunk.js",
+    "static/js/6.593c7784.chunk.js.map": "/react-practice-social-net/static/js/6.593c7784.chunk.js.map",
     "static/css/7.cfd35e07.chunk.css": "/react-practice-social-net/static/css/7.cfd35e07.chunk.css",
     "static/js/7.a17d8b88.chunk.js": "/react-practice-social-net/static/js/7.a17d8b88.chunk.js",
     "static/js/7.a17d8b88.chunk.js.map": "/react-practice-social-net/static/js/7.a17d8b88.chunk.js.map",
@@ -50,9 +50,9 @@
     "static/media/loading.0c0f9572.svg": "/react-practice-social-net/static/media/loading.0c0f9572.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0f59d764.js",
+    "static/js/runtime-main.cb997bf8.js",
     "static/js/3.3846512f.chunk.js",
     "static/css/main.706c02a8.chunk.css",
-    "static/js/main.57d69520.chunk.js"
+    "static/js/main.26b924c0.chunk.js"
   ]
 }
