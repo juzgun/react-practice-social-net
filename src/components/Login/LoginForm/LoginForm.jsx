@@ -18,6 +18,10 @@ const LoginForm = (props) => {
                 <div>
                     <Field component={Input} name={'checkbox'} type={'checkbox'} validate={[]} /> remember me
                 </div>
+                {props.captchaUrl && <div>
+                    <img src={props.captchaUrl} />
+                    <Field placeholder="Please type captcha" name={'captcha'} component={Input} validate={[required]} />
+                </div>}
                 {
                     props.error && <div className={classes.form_summary_error}>
                         {props.error}

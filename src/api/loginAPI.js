@@ -2,7 +2,7 @@ import { instance } from "./instanse";
 
 export const loginAPI = {
     async postLogin(formData) {
-        return await instance.post(`auth/login`, { email: formData.email, password: formData.password, rememberMe: formData.checkbox });
+        return await instance.post(`auth/login`, { email: formData.email, password: formData.password, rememberMe: formData.checkbox, captcha: formData.captcha });
     },
     async deleteLogin() {
         return await instance.delete(`auth/login`);
