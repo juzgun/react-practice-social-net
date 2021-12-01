@@ -23,7 +23,12 @@ const Login = React.lazy(() => import('./components/Login/Login'));
 
 
 const App = (props) => {
-
+  const catchAllUnhandledErrors = (reason, promiseRejectionEvent) => {
+  console.info(reason);
+  }
+  useEffect(() => {
+    window.addEventListener('unhandledrejection', catchAllUnhandledErrors);
+  }, [])
   useEffect(() => {
     props.initializeApp();
   }, [props]);

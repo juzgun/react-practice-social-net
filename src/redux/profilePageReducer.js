@@ -43,8 +43,9 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     if (response.data.resultCode === 0) {
         dispatch(getProfile(userId));
     } else {
-        let error_message = response.data.messages.length > 0 ? response.data.messages[0] : "Undefined error";
-        dispatch(stopSubmit('editProfile', {"contacts": {facebook: error_message} }));
+        const error_message = response.data.messages.length > 0 ? response.data.messages[0] : "Undefined error";
+        const error_key = error_message.substring(error_message.lastIndexOf(">")+1,error_message.lastIndexOf(")")).toLowerCase();
+        dispatch(stopSubmit('editProfile', {"contacts": {[error_key]: error_message.substring(0, error_message.lastIndexOf(" ("))} }));
         return Promise.reject(error_message);
     }
 }

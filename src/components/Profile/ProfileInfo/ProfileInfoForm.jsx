@@ -1,8 +1,6 @@
 import React from "react";
 import {Field, reduxForm} from 'redux-form';
 import {Input, Textarea} from '../../common/FormsControls/FormsControls';
-import {required} from '../../../utils/validators/validators';
-import {Contacts} from "./ProfileInfo";
 import classes from "../../Login/LoginForm/LoginForm.module.css"
 
 const ProfileInfoEditor = ({profile, setEditMode, error, ...props}) => {
