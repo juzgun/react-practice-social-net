@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { follow, unfollow, setCurrentPage, requestUsers, setFollowingInProgressToggle } from './../../redux/usersPageReducer';
+import { follow, unfollow, setCurrentPage, requestUsers, setFollowingInProgressToggle } from '../../redux/usersPageReducer';
 import { useEffect } from 'react';
 import Users from './Users';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
